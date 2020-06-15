@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import {useSelector, useDispatch} from 'react-redux';
 import './App.css';
+import {kek} from './actions';
 
 function App() {
+  const dispatch = useDispatch();
+  const x = useSelector (state => state.x1)
+  let audio = new Audio("/x1.wav")
+  const start = () => {
+    const y=audio.cloneNode()
+    y.play()
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={start}>
+        one
+      </button>
+      <br/>
+      {x}
     </div>
   );
 }
