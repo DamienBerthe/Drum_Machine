@@ -1,8 +1,8 @@
-import x1 from './x1';
+import kek from './sounds';
 import {combineReducers} from 'redux';
 
 const allReducers = combineReducers({
-    x1 : x1
+    kek : kek
 })
 
 export default allReducers;
