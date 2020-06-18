@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'; 
 import {useSelector, useDispatch} from 'react-redux';
 import './App.css';
-//import {kek} from './actions';
 import {soundq, soundw, sounde, sounda, sounds, soundd, soundz, soundx, soundc,} from './actions';
+import 'bootstrap';
 
 function App() {
   const dispatch = useDispatch();
@@ -108,31 +108,31 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={startq}>
+      <button type="button" class="btn btn-danger" onClick={startq}>
         q
       </button>
-      <button onClick={startw}>
+      <button type="button" class="btn btn-danger" onClick={startw}>
         w
       </button>
-      <button onClick={starte}>
+      <button type="button" class="btn btn-danger" onClick={starte}>
         e
       </button>
-      <button onClick={starta}>
+      <button type="button" class="btn btn-danger" onClick={starta}>
         a
       </button>
-      <button onClick={starts}>
+      <button type="button" class="btn btn-danger" onClick={starts}>
         s
       </button>
-      <button onClick={startd}>
+      <button type="button" class="btn btn-danger" onClick={startd}>
         d
       </button>
-      <button onClick={startz}>
+      <button type="button" class="btn btn-danger" onClick={startz}>
         z
       </button>
-      <button onClick={startx}>
+      <button type="button" class="btn btn-danger" onClick={startx}>
         x
       </button>
-      <button onClick={startc}>
+      <button type="button" class="btn btn-danger" onClick={startc}>
         c
       </button>
       {x}
