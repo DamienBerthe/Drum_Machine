@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'; 
+import React, {useEffect, useRef} from 'react'; 
 import {useSelector, useDispatch} from 'react-redux';
 import './App.css';
 import {soundq, soundw, sounde, sounda, sounds, soundd, soundz, soundx, soundc,} from './actions';
@@ -76,9 +76,13 @@ function App() {
     document.addEventListener('keydown', handleKeyPress);
   });
 
+  const buttonq = useRef(null);
   const handleKeyPress = (event) => {
     if(event.key === 'q'){
-      startq();
+      //startq();
+      buttonq.current.focus();
+      buttonq.current.click();
+      //useRef("buttonq").click();
     }
     if(event.key === 'w'){
       startw();
@@ -108,7 +112,7 @@ function App() {
 
   return (
     <div className="App">
-      <button type="button" class="btn btn-danger" onClick={startq}>
+      <button ref={buttonq} type="button" class="btn btn-danger" onClick={startq}>
         q
       </button>
       <button type="button" class="btn btn-danger" onClick={startw}>
