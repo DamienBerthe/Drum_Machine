@@ -18,11 +18,32 @@ function App() {
   let audio8 = new Audio("/darkchoir.wav")
   let audio9 = new Audio("/femalevocal.wav")
 
+  let y =[
+    {
+      audio: new Audio("/inception.wav"),
+      key: 'q'
+    }
+
+  ]
+//.map pour boutons
+//.find pour handleKeyPress
+
+
   const startq = () => {
     const y=audio1.cloneNode()
     y.play()
     dispatch(soundq())
   }
+
+  function start(kek){
+    kek.cloneNode().play()
+    dispatch(soundq())
+  }
+
+  const buttonqq = useRef(null);
+  const xx = y.map (x=>
+    <button ref={buttonqq} type="button" class="btn btn-danger" onClick={()=>start(audio1)}>{x.key}</button>
+    );
 
   const startw = () => {
     const y=audio2.cloneNode()
@@ -140,6 +161,7 @@ function App() {
         c
       </button>
       {x}
+      {xx}
       <br/>
     </div>
   );
