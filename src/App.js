@@ -1,168 +1,142 @@
-import React, {useEffect, useRef} from 'react'; 
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
-import {soundq, soundw, sounde, sounda, sounds, soundd, soundz, soundx, soundc,} from './actions';
+import { soundq, soundw, sounde, sounda, sounds, soundd, soundz, soundx, soundc, } from './actions';
 import 'bootstrap';
+import Slider from 'react-input-slider';
 
 function App() {
   const dispatch = useDispatch();
-  const x = useSelector (state => state.kek)
+  const x = useSelector(state => state.kek)
   //let audio = new Audio("https://drive.google.com/uc?id=1w6Ih52RKjQJ7D4WB26Ua_BEOLNRWlURO")
-  let audio1 = new Audio("/inception.wav")
-  let audio2 = new Audio("/ahhhh.mp3")
-  let audio3 = new Audio("/boom.wav")
-  let audio4 = new Audio("/thx.wav")
-  let audio5 = new Audio("/organ.wav")
-  let audio6 = new Audio("/chamberchoir.wav")
-  let audio7 = new Audio("/drum.wav")
-  let audio8 = new Audio("/darkchoir.wav")
-  let audio9 = new Audio("/femalevocal.wav")
+  const buttonq = useRef(null);
+  const buttonw = useRef(null);
+  const buttone = useRef(null);
+  const buttona = useRef(null);
+  const buttons = useRef(null);
+  const buttond = useRef(null);
+  const buttonz = useRef(null);
+  const buttonx = useRef(null);
+  const buttonc = useRef(null);
 
-  let y =[
+  let y = [
     {
       audio: new Audio("/inception.wav"),
-      key: 'q'
+      key: 'q',
+      ref: buttonq,
+      action: function () {
+        return soundq();
+      }
+    },
+    {
+      audio: new Audio("/ahhhh.mp3"),
+      key: 'w',
+      ref: buttonw,
+      action: function () {
+        return soundw();
+      }
+    },
+    {
+      audio: new Audio("/boom.wav"),
+      key: 'e',
+      ref: buttone,
+      action: function () {
+        return sounde();
+      }
+    },
+    {
+      audio: new Audio("/thx.wav"),
+      key: 'a',
+      ref: buttona,
+      action: function () {
+        return sounda();
+      }
+    },
+    {
+      audio: new Audio("/organ.wav"),
+      key: 's',
+      ref: buttons,
+      action: function () {
+        return sounds();
+      }
+    },
+    {
+      audio: new Audio("/chamberchoir.wav"),
+      key: 'd',
+      ref: buttond,
+      action: function () {
+        return soundd();
+      }
+    },
+    {
+      audio: new Audio("/drum.wav"),
+      key: 'z',
+      ref: buttonz,
+      action: function () {
+        return soundz();
+      }
+    },
+    {
+      audio: new Audio("/darkchoir.wav"),
+      key: 'x',
+      ref: buttonx,
+      action: function () {
+        return soundx();
+      }
+    },
+    {
+      audio: new Audio("/femalevocal.wav"),
+      key: 'c',
+      ref: buttonc,
+      action: function () {
+        return soundc();
+      }
+    }
+  ]
+  //.map pour boutons
+  //.find pour handleKeyPress
+  function start(kek) {
+    kek.audio.play()
+    dispatch(kek.action())
+  }
+
+  const [state, setState] = useState({ x: 10, y: 10 });
+
+    for(let i=0;i<y.length;i++){
+      y[i].audio.volume=state.x/100;
     }
 
-  ]
-//.map pour boutons
-//.find pour handleKeyPress
+  
 
+  const xx = y.map(x =>
+    <button ref={x.ref} type="button" class="btn btn-danger" onClick={() => start(x)}>{x.key}</button>
+  );
 
-  const startq = () => {
-    const y=audio1.cloneNode()
-    y.play()
-    dispatch(soundq())
+  const handleKeyPress = (event) => {
+    const kek = y.find(x => x.key === event.key)
+    if (kek) {
+      kek.ref.current.focus();
+      kek.ref.current.click();
+    }
   }
-
-  function start(kek){
-    kek.cloneNode().play()
-    dispatch(soundq())
-  }
-
-  const buttonqq = useRef(null);
-  const xx = y.map (x=>
-    <button ref={buttonqq} type="button" class="btn btn-danger" onClick={()=>start(audio1)}>{x.key}</button>
-    );
-
-  const startw = () => {
-    const y=audio2.cloneNode()
-    y.play()
-    dispatch(soundw())
-  }
-
-  const starte = () => {
-    const y=audio3.cloneNode()
-    y.play()
-    dispatch(sounde())
-  }
-
-  const starta = () => {
-    const y=audio4.cloneNode()
-    y.play()
-    dispatch(sounda())
-  }
-
-  const starts = () => {
-    const y=audio5.cloneNode()
-    y.play()
-    dispatch(sounds())
-  }
-
-  const startd = () => {
-    const y=audio6.cloneNode()
-    y.play()
-    dispatch(soundd())
-  }
-
-  const startz = () => {
-    const y=audio7.cloneNode()
-    y.play()
-    dispatch(soundz())
-  }
-
-  const startx = () => {
-    const y=audio8.cloneNode()
-    y.play()
-    dispatch(soundx())
-  }
-
-  const startc = () => {
-    const y=audio9.cloneNode()
-    y.play()
-    dispatch(soundc())
-  }
-
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
   });
 
-  const buttonq = useRef(null);
-  const handleKeyPress = (event) => {
-    if(event.key === 'q'){
-      //startq();
-      buttonq.current.focus();
-      buttonq.current.click();
-      //useRef("buttonq").click();
-    }
-    if(event.key === 'w'){
-      startw();
-    }
-    if(event.key === 'e'){
-      starte();
-    }
-    if(event.key === 'a'){
-      starta();
-    }
-    if(event.key === 's'){
-      starts();
-    }
-    if(event.key === 'd'){
-      startd();
-    }
-    if(event.key === 'z'){
-      startz();
-    }
-    if(event.key === 'x'){
-      startx();
-    }
-    if(event.key === 'c'){
-      startc();
-    }
-  }
-
   return (
     <div className="App">
-      <button ref={buttonq} type="button" class="btn btn-danger" onClick={startq}>
-        q
-      </button>
-      <button type="button" class="btn btn-danger" onClick={startw}>
-        w
-      </button>
-      <button type="button" class="btn btn-danger" onClick={starte}>
-        e
-      </button>
-      <button type="button" class="btn btn-danger" onClick={starta}>
-        a
-      </button>
-      <button type="button" class="btn btn-danger" onClick={starts}>
-        s
-      </button>
-      <button type="button" class="btn btn-danger" onClick={startd}>
-        d
-      </button>
-      <button type="button" class="btn btn-danger" onClick={startz}>
-        z
-      </button>
-      <button type="button" class="btn btn-danger" onClick={startx}>
-        x
-      </button>
-      <button type="button" class="btn btn-danger" onClick={startc}>
-        c
-      </button>
-      {x}
-      {xx}
-      <br/>
+      <div className="Keys">
+        {xx}
+      </div>
+      <div className="Preview">
+        {x}
+      </div>
+      <Slider
+        axis="x"
+        x={state.x}
+        onChange={({ x }) => setState(state => ({ ...state, x }))}
+      />
+      {state.x}
     </div>
   );
 }
