@@ -96,16 +96,25 @@ function App() {
   //.map pour boutons
   //.find pour handleKeyPress
   function start(kek) {
+    kek.audio.volume=volume/100
+    //kek.audio.load()
+    //kek.audio.cloneNode().play()
     kek.audio.play()
+    //let x=kek.audio.cloneNode()
+    //x.volume=volume/100
+    //x.play()
     dispatch(kek.action())
   }
-
-  const [state, setState] = useState({ x: 10, y: 10 });
-
+  
+  //const [state, setState] = useState({ x: 10});
+  const [volume, setVolume] = useState(10)
+/*
+function changeVolume(){
     for(let i=0;i<y.length;i++){
-      y[i].audio.volume=state.x/100;
+      y[i].audio.volume=volume/100;
     }
-
+  }
+*/
   
 
   const xx = y.map(x =>
@@ -131,12 +140,23 @@ function App() {
       <div className="Preview">
         {x}
       </div>
-      <Slider
-        axis="x"
+      <input
+          type="range"
+          min={0}
+          max={100}
+          step={1}
+          value={volume}
+          onChange={event => {
+            //setVolume(event.target.valueAsNumber)
+            setVolume(event.target.value)
+          }}
+        />
+      {/*<Slider
         x={state.x}
-        onChange={({ x }) => setState(state => ({ ...state, x }))}
+        onChange={({ x }) => {setState(state => ({ ...state, x }))}}
       />
-      {state.x}
+      {state.x}*/}
+      {volume}
     </div>
   );
 }
