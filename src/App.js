@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import { soundq, soundw, sounde, sounda, sounds, soundd, soundz, soundx, soundc, } from './actions';
 import 'bootstrap';
-//import Slider from 'react-input-slider';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +21,7 @@ function App() {
   let y = [
     {
       //audio:"/inception.mp3",
-      audio:"https://drive.google.com/uc?id=1GJgtOGN8dEG9OkTGe43k1ug6hyZ1wVWI",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/inception.mp3",
       key: 'q',
       ref: buttonq,
       action: function () {
@@ -31,7 +30,7 @@ function App() {
     },
     {
       //audio:"/ahhhh.mp3",
-      audio:"https://drive.google.com/uc?id=1TjgL4q4fM-Gm9-EOo12mcMAuuQeTXMk9",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/ahhhh.mp3",
       key: 'w',
       ref: buttonw,
       action: function () {
@@ -40,7 +39,7 @@ function App() {
     },
     {
       //audio:"/boom.mp3",
-      audio:"https://drive.google.com/uc?id=1lJAAWrSkOUG3cBiUUUWDz69vnjEyBCjy",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/boom.mp3",
       key: 'e',
       ref: buttone,
       action: function () {
@@ -49,7 +48,7 @@ function App() {
     },
     {
       //audio:"/thx.mp3",
-      audio:"https://drive.google.com/uc?id=1Be26JLoS6xsBwfx2KeC0LFtVgAs_vWTc",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/thx.mp3",
       key: 'a',
       ref: buttona,
       action: function () {
@@ -58,7 +57,7 @@ function App() {
     },
     {
       //audio:"/organ.mp3",
-      audio:"https://drive.google.com/uc?id=1E3PRxSbDcNOjjGBDczDWhgD5zcbqovwY",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/organ.mp3",
       key: 's',
       ref: buttons,
       action: function () {
@@ -67,7 +66,7 @@ function App() {
     },
     {
       //audio:"/chamberchoir.mp3",
-      audio:"https://drive.google.com/uc?id=1zbTclVJ0GWDQrXOglklkeXx8p0TsD0f1",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/chamberchoir.mp3",
       key: 'd',
       ref: buttond,
       action: function () {
@@ -76,7 +75,7 @@ function App() {
     },
     {
       //audio:"/drum.mp3",
-      audio:"https://drive.google.com/uc?id=1d_bpmQDRCJr9qPoVH8doDPqJAiRkSETh",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/drum.mp3",
       key: 'z',
       ref: buttonz,
       action: function () {
@@ -85,7 +84,7 @@ function App() {
     },
     {
       //audio:"/darkchoir.mp3",
-      audio:"https://drive.google.com/uc?id=1ejR8spUGqxwbMqtptfBlDfvf8FGHtG8z",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/darkchoir.mp3",
       key: 'x',
       ref: buttonx,
       action: function () {
@@ -94,7 +93,7 @@ function App() {
     },
     {
       //audio:"/femalevocal.mp3",
-      audio:"https://drive.google.com/uc?id=14YHuYavqQehIXw1CUaWQZk0mhcl0tQYD",
+      audio:"https://raw.githubusercontent.com/Nvejqygroqxk/Drum_Machine/master/public/femalevocal.mp3",
       key: 'c',
       ref: buttonc,
       action: function () {
