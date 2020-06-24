@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import { soundq, soundw, sounde, sounda, sounds, soundd, soundz, soundx, soundc, } from './actions';
 import 'bootstrap';
-import Slider from 'react-input-slider';
+//import Slider from 'react-input-slider';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +21,8 @@ function App() {
 
   let y = [
     {
-      audio: new Audio("/inception.wav"),
+      //audio: new Audio("/inception.wav"),
+      audio:"/inception.wav",
       key: 'q',
       ref: buttonq,
       action: function () {
@@ -29,7 +30,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/ahhhh.mp3"),
+      //audio: new Audio("/ahhhh.mp3"),
+      audio:"/ahhhh.mp3",
       key: 'w',
       ref: buttonw,
       action: function () {
@@ -37,7 +39,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/boom.wav"),
+      //audio: new Audio("/boom.wav"),
+      audio:"/boom.wav",
       key: 'e',
       ref: buttone,
       action: function () {
@@ -45,7 +48,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/thx.wav"),
+      //audio: new Audio("/thx.wav"),
+      audio:"/thx.wav",
       key: 'a',
       ref: buttona,
       action: function () {
@@ -53,7 +57,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/organ.wav"),
+      //audio: new Audio("/organ.wav"),
+      audio:"/organ.wav",
       key: 's',
       ref: buttons,
       action: function () {
@@ -61,7 +66,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/chamberchoir.wav"),
+      //audio: new Audio("/chamberchoir.wav"),
+      audio:"/chamberchoir.wav",
       key: 'd',
       ref: buttond,
       action: function () {
@@ -69,7 +75,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/drum.wav"),
+      //audio: new Audio("/drum.wav"),
+      audio:"/drum.wav",
       key: 'z',
       ref: buttonz,
       action: function () {
@@ -77,7 +84,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/darkchoir.wav"),
+      //audio: new Audio("/darkchoir.wav"),
+      audio:"/darkchoir.wav",
       key: 'x',
       ref: buttonx,
       action: function () {
@@ -85,7 +93,8 @@ function App() {
       }
     },
     {
-      audio: new Audio("/femalevocal.wav"),
+      //audio: new Audio("/femalevocal.wav"),
+      audio:"/femalevocal.wav",
       key: 'c',
       ref: buttonc,
       action: function () {
@@ -96,10 +105,13 @@ function App() {
   //.map pour boutons
   //.find pour handleKeyPress
   function start(kek) {
-    kek.audio.volume=volume/100
+    //kek.audio.volume=volume/100
+    //kek.audio.play()
+    let x = new Audio(kek.audio)
+    x.volume=volume/100
+    x.play()
     //kek.audio.load()
     //kek.audio.cloneNode().play()
-    kek.audio.play()
     //let x=kek.audio.cloneNode()
     //x.volume=volume/100
     //x.play()
@@ -129,7 +141,10 @@ function changeVolume(){
     }
   }
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    }
   });
 
   return (
@@ -147,8 +162,8 @@ function changeVolume(){
           step={1}
           value={volume}
           onChange={event => {
-            //setVolume(event.target.valueAsNumber)
-            setVolume(event.target.value)
+            setVolume(event.target.valueAsNumber)
+            //setVolume(event.target.value)
           }}
         />
       {/*<Slider
