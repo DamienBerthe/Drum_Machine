@@ -8,7 +8,7 @@ import 'bootstrap';
 function App() {
   const dispatch = useDispatch();
   const x = useSelector(state => state.kek)
-  //let audio = new Audio("https://drive.google.com/uc?id=1w6Ih52RKjQJ7D4WB26Ua_BEOLNRWlURO")
+  
   const buttonq = useRef(null);
   const buttonw = useRef(null);
   const buttone = useRef(null);
@@ -21,8 +21,8 @@ function App() {
 
   let y = [
     {
-      //audio: new Audio("/inception.wav"),
-      audio:"/inception.wav",
+      //audio:"/inception.mp3",
+      audio:"https://drive.google.com/uc?id=1GJgtOGN8dEG9OkTGe43k1ug6hyZ1wVWI",
       key: 'q',
       ref: buttonq,
       action: function () {
@@ -30,8 +30,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/ahhhh.mp3"),
-      audio:"/ahhhh.mp3",
+      //audio:"/ahhhh.mp3",
+      audio:"https://drive.google.com/uc?id=1TjgL4q4fM-Gm9-EOo12mcMAuuQeTXMk9",
       key: 'w',
       ref: buttonw,
       action: function () {
@@ -39,8 +39,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/boom.wav"),
-      audio:"/boom.wav",
+      //audio:"/boom.mp3",
+      audio:"https://drive.google.com/uc?id=1lJAAWrSkOUG3cBiUUUWDz69vnjEyBCjy",
       key: 'e',
       ref: buttone,
       action: function () {
@@ -48,8 +48,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/thx.wav"),
-      audio:"/thx.wav",
+      //audio:"/thx.mp3",
+      audio:"https://drive.google.com/uc?id=1Be26JLoS6xsBwfx2KeC0LFtVgAs_vWTc",
       key: 'a',
       ref: buttona,
       action: function () {
@@ -57,8 +57,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/organ.wav"),
-      audio:"/organ.wav",
+      //audio:"/organ.mp3",
+      audio:"https://drive.google.com/uc?id=1E3PRxSbDcNOjjGBDczDWhgD5zcbqovwY",
       key: 's',
       ref: buttons,
       action: function () {
@@ -66,8 +66,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/chamberchoir.wav"),
-      audio:"/chamberchoir.wav",
+      //audio:"/chamberchoir.mp3",
+      audio:"https://drive.google.com/uc?id=1zbTclVJ0GWDQrXOglklkeXx8p0TsD0f1",
       key: 'd',
       ref: buttond,
       action: function () {
@@ -75,8 +75,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/drum.wav"),
-      audio:"/drum.wav",
+      //audio:"/drum.mp3",
+      audio:"https://drive.google.com/uc?id=1d_bpmQDRCJr9qPoVH8doDPqJAiRkSETh",
       key: 'z',
       ref: buttonz,
       action: function () {
@@ -84,8 +84,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/darkchoir.wav"),
-      audio:"/darkchoir.wav",
+      //audio:"/darkchoir.mp3",
+      audio:"https://drive.google.com/uc?id=1ejR8spUGqxwbMqtptfBlDfvf8FGHtG8z",
       key: 'x',
       ref: buttonx,
       action: function () {
@@ -93,8 +93,8 @@ function App() {
       }
     },
     {
-      //audio: new Audio("/femalevocal.wav"),
-      audio:"/femalevocal.wav",
+      //audio:"/femalevocal.mp3",
+      audio:"https://drive.google.com/uc?id=14YHuYavqQehIXw1CUaWQZk0mhcl0tQYD",
       key: 'c',
       ref: buttonc,
       action: function () {
@@ -102,39 +102,27 @@ function App() {
       }
     }
   ]
-  //.map pour boutons
-  //.find pour handleKeyPress
+
   function start(kek) {
-    //kek.audio.volume=volume/100
-    //kek.audio.play()
-    let x = new Audio(kek.audio)
+    /*let x = new Audio(kek.audio)
     x.volume=volume/100
-    x.play()
-    //kek.audio.load()
-    //kek.audio.cloneNode().play()
-    //let x=kek.audio.cloneNode()
-    //x.volume=volume/100
-    //x.play()
+    x.play()*/
+    document.getElementById((kek.key).toUpperCase()).volume=volume/100
+    document.getElementById((kek.key).toUpperCase()).play()
     dispatch(kek.action())
   }
   
-  //const [state, setState] = useState({ x: 10});
   const [volume, setVolume] = useState(10)
-/*
-function changeVolume(){
-    for(let i=0;i<y.length;i++){
-      y[i].audio.volume=volume/100;
-    }
-  }
-*/
   
-
   const xx = y.map(x =>
-    <button ref={x.ref} type="button" class="btn btn-danger" onClick={() => start(x)}>{x.key}</button>
+    <button ref={x.ref} type="button" class="btn btn-danger drum-pad" id={x.ref} onClick={() => start(x)}>
+      <audio src={x.audio} class="clip" id={(x.key).toUpperCase()}/>
+      {(x.key).toUpperCase()}
+    </button>
   );
 
   const handleKeyPress = (event) => {
-    const kek = y.find(x => x.key === event.key)
+    const kek = y.find(x => x.key === event.key||x.key === (event.key).toLowerCase())
     if (kek) {
       kek.ref.current.focus();
       kek.ref.current.click();
@@ -148,11 +136,11 @@ function changeVolume(){
   });
 
   return (
-    <div className="App">
+    <div className="App" id="drum-machine">
       <div className="Keys">
         {xx}
       </div>
-      <div className="Preview">
+      <div id="display">
         {x}
       </div>
       <input
@@ -166,11 +154,6 @@ function changeVolume(){
             //setVolume(event.target.value)
           }}
         />
-      {/*<Slider
-        x={state.x}
-        onChange={({ x }) => {setState(state => ({ ...state, x }))}}
-      />
-      {state.x}*/}
       {volume}
     </div>
   );
