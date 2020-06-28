@@ -1,4 +1,4 @@
-const kek = (state= '', action) =>{
+const soundReducer = (state= '', action) =>{
     switch(action.type){
         case 'inception':
             state = 'inception'
@@ -33,4 +33,4 @@ const kek = (state= '', action) =>{
     }
 }
 
-export default kek;
+export default soundReducer;

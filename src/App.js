@@ -6,7 +6,7 @@ import 'bootstrap';
 
 function App() {
   const dispatch = useDispatch();
-  const x = useSelector(state => state.kek)
+  const x = useSelector(state => state)
   
   const buttonq = useRef(null);
   const buttonw = useRef(null);
